@@ -1,0 +1,115 @@
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+    }
+    .gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+    }
+    .c2{
+        background-color:rgba(0,0,0,0.3) ;
+        /* color:white; */
+    }
+    .cl1{
+        color:white !important;
+    }
+    .super_parent{
+        background-color: burlywood;
+        /* height: 25vh; */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+    .mynav {
+        background-color: #0a00105c;
+        width: 90px;
+        height: 100vh;
+        border-radius: 40px;
+      }
+      
+      .nav_i{
+        display: block;
+        text-decoration: none;
+        padding: 24px;
+        text-align: center;
+        color: white;
+        font-size: 36px;
+      }
+      .nav_i:hover {
+        color: #000;
+        transition: all 0.3s ease;
+      }
+      .active {
+        background-color: tomato !important;
+      }
+      
+      *{
+       margin:0;
+      }
+      .avatar {
+  
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .avatar:hover {
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+      }
+      .chat{
+        height: 100vh;
+        background-color: brown;
+        width: 100%;
+        border-radius: 40px;
+      }
+      .chat_header{
+        height: 10%;
+        background-color: rgb(73, 245, 147);
+        width: 100%;
+        border-radius: 30px;
+      }
+      .chat_history{
+        height: 80%;
+        background-color: rgb(23, 142, 178);
+        width: 100%;
+        border-radius: 30px;
+      }
+      .chat_send{
+        height: 10%;
+        background-color: rgb(49, 31, 37);
+        width: 100%;
+        border-radius: 30px;
+        position: relative;
+        bottom: 0px;
+      }
+      .list{
+        height: 100vh;
+        background-color: rgb(50, 5, 31);
+        width: 100%;
+        border-radius: 40px;
+      }
+      
+      .list_header{
+        height: 20%;
+        background-color: rgb(73, 245, 147);
+        width: 100%;
+        border-radius: 30px;
+      }
+
+      .list_body{
+        height: 80%;
+        background-color: rgb(23, 142, 178);
+        width: 100%;
+        border-radius: 30px;
+      }
