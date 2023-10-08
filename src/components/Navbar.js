@@ -1,6 +1,6 @@
 import {React,useEffect} from 'react'
 import { useCookies } from "react-cookie";
-import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 
