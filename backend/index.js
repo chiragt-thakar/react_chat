@@ -1,8 +1,16 @@
-var express = require('express')
+const express = require('express')
+const app = express()
+const http = require('http');
+const socketIo = require('socket.io')
 const cookieParser = require('cookie-parser');
-var cors = require('cors')
-var app = express()
-
+const cors = require('cors')
+const server = http.createServer(app);
+// const io = socketIo(server);
+var io = require('socket.io')(server, {
+  cors: {
+    origin: '*',
+  }
+});
 const connectToMongo = require('./db/db.js')
 //const registration = require('./routes/registration.js')
 const allowedOrigins = ['http://localhost:3000', 'http://localhost:3000/login'];
@@ -28,9 +36,24 @@ app.use('/api',require('./routes/registration.js'))
 app.use('/api',require('./routes/login.js'))
 app.use('/api',require('./routes/home.js'))
 app.use('/api',require('./routes/logout.js'))
+app.use('/api',require('./routes/userlist.js'))
+app.use('/api',require('./routes/addMessage.js'))
+
+io.on('connection', (socket) => {
+  console.log(`User connected: ${socket.id}`);
+
+  socket.on('sendMessage', (message,user) => {
+    // Broadcast the message to all connected clients
+   io.emit('msgRecive',message,user);
+
+  socket.on('disconnect', () => {
+    console.log(`User disconnected: ${socket.id}`);
+  });
+});
+});
 
 // Listen on port 3000
-app.listen(3001, () => {
+server.listen(3001, () => {
   console.log('Server is running on port 3001');
   // Database Connection
   connectToMongo(); 

@@ -39,17 +39,17 @@ function Navbar2() {
 
     return (
         <>
-        <span>{cookies.name}</span>
+        {/* <span>{cookies.name}</span> */}
             <div className="col-1 icon">
 
                 <div className="mynav">
                     {/* <a className="active " href="#"><i className="fa fa-home"></i></a> */}
-                    <a href="#" className="nav_i"><img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" className="avatar"></img></a>
-                    <a href="#" className="nav_i"><i className="fa fa-home"></i></a>
-                    <a href="#" className="nav_i"><i class="fa fa-user" aria-hidden="true"></i></a>
-                    <a href="#" className="nav_i"><i class="fa fa-users" aria-hidden="true"></i></a>
-                    <a href="#" className="nav_i">M</a>
-                    <a href="#" className="nav_i">Q</a>
+                    <Link to="#" className="nav_i"><img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" className="avatar"></img></Link>
+                    <Link to="#" className="nav_i"><i className="fa fa-home"></i></Link>
+                    <Link to="#" className="nav_i"><i class="fa fa-user" aria-hidden="true"></i></Link>
+                    <Link to="#" className="nav_i"><i class="fa fa-users" aria-hidden="true"></i></Link>
+                    <Link to="#" className="nav_i">M</Link>
+                    <Link to="#" className="nav_i">Q</Link>
                     {/* <a href="#" className="nav_i"><i class="fa fa-sign-out" aria-hidden="true"></i></a> */}
                     {/* <i class="fa fa-sign-in" aria-hidden="true"></i> */}
                     {/* for sign in  */}
