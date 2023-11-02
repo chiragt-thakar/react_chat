@@ -1,8 +1,10 @@
 import {React,useState,useEffect} from 'react'
 import axios from "axios";
-export default function UserList({user}) {
+export default function UserList({changeChat}) {
 
   const [Data, setData] = useState([]);
+  const [currentSelected, setCurrentSelected] = useState(undefined);
+
   
   useEffect(() => {
     async function fetchData() {
@@ -21,9 +23,14 @@ export default function UserList({user}) {
   
  function get_user(event){
   const selectedValue = event.target.getAttribute('value');
-  user(selectedValue);
   console.log(selectedValue);
- }
+}
+const changeCurrentChat = (index, contact) => {
+ 
+  setCurrentSelected(index);
+  console.log("current selected index ",index)
+  changeChat(index);
+};
   return (
     <>
      <div className="col-3 ">
@@ -33,7 +40,11 @@ export default function UserList({user}) {
             
             <ul className='list-group list-group-flush'>
             {Data?.map((item) => (
-              <li value={item._id} className='list-group-item' onClick={get_user}>{item.userName}</li>
+              <li key={item._id}
+              //  className='list-group-item' 
+               className={`list-group-item ${item._id === currentSelected ? "selected" : ""
+              }`}
+               onClick={()=>changeCurrentChat(item._id,item.userName)}>{item.userName}</li>
             ))}
           </ul>
       

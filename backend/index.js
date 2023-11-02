@@ -38,19 +38,34 @@ app.use('/api',require('./routes/home.js'))
 app.use('/api',require('./routes/logout.js'))
 app.use('/api',require('./routes/userlist.js'))
 app.use('/api',require('./routes/addMessage.js'))
+app.use('/api',require('./routes/getMessage.js'))
+
+
+global.onlineUsers = new Map();
 
 io.on('connection', (socket) => {
   console.log(`User connected: ${socket.id}`);
 
-  socket.on('sendMessage', (message,user) => {
-    // Broadcast the message to all connected clients
-   io.emit('msgRecive',message,user);
+  socket.on("add-user", (userId) => {
+    onlineUsers.set(userId, socket.id);
+  });
+
+  console.log("user is ",onlineUsers)
+
+ socket.on("send-msg", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    console.log("sendUserSocket",sendUserSocket)
+    if (sendUserSocket) {
+      socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+    }
+  });
 
   socket.on('disconnect', () => {
     console.log(`User disconnected: ${socket.id}`);
   });
 });
-});
+
+
 
 // Listen on port 3000
 server.listen(3001, () => {

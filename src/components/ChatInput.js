@@ -20,6 +20,7 @@ function ChatInput({handleSendMsg}) {
         if (msg.length > 0) {
            handleSendMsg(msg);
           setMsg("");
+          console.log("this is chat",msg)
         }
       };
     return (
