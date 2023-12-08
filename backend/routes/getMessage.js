@@ -5,7 +5,7 @@ const router = express.Router();
 router.post('/getmessage', async (req, res, next) => {
     try {
         const { from, to } = req.body;
-    
+    console.log("to is ", to);
         const messages = await messageModel.find({
           users: {
             $all: [from, to],

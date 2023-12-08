@@ -4,7 +4,7 @@ function Welcome() {
   return (
     <>
       <div className="col-6">
-            <div className="chat">
+            <div className="w_chat">
             <h1>This is the welcome page</h1>
             </div>
           </div>

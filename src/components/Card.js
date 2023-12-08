@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 import ChatContainer from "./ChatContainer";
 import Welcome from "./Welcome";
 // const socket = io('http://localhost:3001');
-export default function Card() {
+export default function Card({getsocket}) {
   const navigate = useNavigate();
 
   const socket = useRef(null);
@@ -17,28 +17,32 @@ export default function Card() {
   const [cookies, setCookie] = useCookies(['name']);
   const [selectedUser, setSelectedUser] = useState('');
   const [userData, setUserData] = useState(null);
-  const [Message, setMessage] = useState("");
+  const [socket_id, setsocket] = useState("");
   const [currentChat, setCurrentChat] = useState(undefined); //logic for welcome component rendering
   const [currentUser, setCurrentUser] = useState(undefined);
 
+ 
 
-   useEffect(() => {
-    //  if (typeof cookies.name === 'undefined' || cookies.name === null) {
-    //    navigate("/login");
-    //  } else {
-       console.log("You are already logged in.",cookies.name);
-       setCurrentUser(cookies.name);
-    //  }
-   }, []);
+ 
   useEffect(() => {
     if (currentUser) {
       console.log("card currentUser",currentUser)
       socket.current = io('http://localhost:3001');
       console.log("card socket",socket)
       socket.current.emit("add-user", currentUser);
-
+      setsocket(socket.current);
+       getsocket(socket.current);
     }
   }, [currentUser]);
+  useEffect(() => {
+    // if (typeof cookies.name === 'undefined' || cookies.name === null) {
+    // navigate("/login");
+    // } else {
+     console.log("You are already logged in.",socket_id);
+     setCurrentUser(cookies.name);
+    //  getsocket(socket_id);
+    // }
+ }, [getsocket]);
 
   // socket.on("connect", () => {
   //   console.log(socket.id); // x8WIv7-mJelg7on_ALbx
@@ -85,9 +89,10 @@ export default function Card() {
   }, [userData, setCookie]);
   console.log("this is 2 ", userData)
 
-  const handleChatChange = (chat) => {
-    setCurrentChat(chat);
-     console.log("cht,chat",chat)
+  const handleChatChange = (user_id,user) => {
+    setCurrentChat(user_id);
+    setSelectedUser(user);
+     console.log("cht,chat",user)
    };
 
   // const Name = () => <div>Home Page</div>; 
@@ -104,7 +109,7 @@ export default function Card() {
           {currentChat === undefined ? (
             <Welcome />
           ) : (
-             <ChatContainer currentChat={currentChat} socket={socket} />
+             <ChatContainer currentChat={currentChat} socket={socket} userName={selectedUser}/>
 
 
 

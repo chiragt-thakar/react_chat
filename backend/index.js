@@ -1,3 +1,4 @@
+const User = require('./models/user.js')
 const express = require('express')
 const app = express()
 const http = require('http');
@@ -39,6 +40,8 @@ app.use('/api',require('./routes/logout.js'))
 app.use('/api',require('./routes/userlist.js'))
 app.use('/api',require('./routes/addMessage.js'))
 app.use('/api',require('./routes/getMessage.js'))
+app.use('/api',require('./routes/createGroup.js'))
+app.use('/api',require('./routes/groupList.js'))
 
 
 global.onlineUsers = new Map();
@@ -48,6 +51,8 @@ io.on('connection', (socket) => {
 
   socket.on("add-user", (userId) => {
     onlineUsers.set(userId, socket.id);
+    socket.usermId=userId;
+    console.log('socket.usermId',socket.usermId)
   });
 
   console.log("user is ",onlineUsers)
@@ -60,8 +65,39 @@ io.on('connection', (socket) => {
     }
   });
 
+
+  socket.on("joinRoom", ({ id }) => {
+    console.log("A user joined chatroom: " , id);
+    socket.join(id);
+  });
+
+  socket.on("leaveRoom", ({ id }) => {
+    socket.leave(id);
+    console.log("A user left chatroom: " ,id);
+  });
+
   socket.on('disconnect', () => {
     console.log(`User disconnected: ${socket.id}`);
+  });
+  socket.on("chatroomMessage", async ({ chatroomID, message }) => {
+    if (message.trim().length > 0) {
+       const usr = await User.findOne({ _id: socket.usermId });
+      // const newMessage = new Message({
+      //   chatroom: userId,
+      //   user: socket.userId,
+      //   message,
+      // });
+      console.log("chatroom id ",chatroomID)
+      console.log("chatroom message ",message)
+      console.log("chatroom socket ",socket.usermId)
+      console.log("chatroom User Name ",usr)
+       io.to(chatroomID).emit("newMessage", {
+         message,
+          name: usr.userName,
+          usermId: socket.usermId,
+       });
+      // await newMessage.save();
+    }
   });
 });
 

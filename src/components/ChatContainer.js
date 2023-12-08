@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
-function ChatContainer({ currentChat, socket }) {
+function ChatContainer({ currentChat, socket,userName }) {
     const [first, setfirst] = useState("")
     const [cookies] = useCookies(['name']);
     const [messages, setMessages] = useState([]);
@@ -15,14 +15,15 @@ function ChatContainer({ currentChat, socket }) {
         // Fetch user data when the component mounts
         async function fetchmsg() {
           try {
-            const response = await axios.post("http://localhost:3001/api/getMessage  ", {from: cookies.name,to: currentChat._id,}, { withCredentials: true });
+            const response = await axios.post("http://localhost:3001/api/getMessage  ", {from: cookies.name,to: currentChat,}, { withCredentials: true });
             setMessages(response.data);
+            console.log("getMessge :-", response);
         } catch (error) {
             console.error("Error fetching user data:", error);
           }
         }
         fetchmsg();
-      }, []);
+      }, [userName]);
 
 
 
@@ -80,6 +81,7 @@ function ChatContainer({ currentChat, socket }) {
             <div className="chat">
                 <div className="chat_header">
                     {/* <Name></Name> */}{ }
+                    <span className='nameTitle mx-5 my-5'>{userName}</span>
                 </div>
                 <div className="chat_history">
                 <div className="chat-messages">

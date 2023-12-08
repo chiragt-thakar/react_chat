@@ -1,7 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
-var jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
@@ -12,7 +11,6 @@ const corsOptions = {
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow credentials (cookies)
 };
-const JWT_SECRET = '3*&^$%4%@@#$%$#)(*&&*()8648962(*'
 
 router.post('/registration', async function (req, res) {
     let user = await User.findOne({ email: req.body.email });

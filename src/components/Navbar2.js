@@ -46,22 +46,22 @@ function Navbar2() {
                     {/* <a className="active " href="#"><i className="fa fa-home"></i></a> */}
                     <Link to="#" className="nav_i"><img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" className="avatar"></img></Link>
                     <Link to="#" className="nav_i"><i className="fa fa-home"></i></Link>
-                    <Link to="#" className="nav_i"><i class="fa fa-user" aria-hidden="true"></i></Link>
-                    <Link to="#" className="nav_i"><i class="fa fa-users" aria-hidden="true"></i></Link>
+                    <Link to="/home" className="nav_i"><i class="fa fa-user" aria-hidden="true"></i></Link>
+                    <Link to="/group" className="nav_i"><i class="fa fa-users" aria-hidden="true"></i></Link>
                     <Link to="#" className="nav_i">M</Link>
                     <Link to="#" className="nav_i">Q</Link>
                     {/* <a href="#" className="nav_i"><i class="fa fa-sign-out" aria-hidden="true"></i></a> */}
                     {/* <i class="fa fa-sign-in" aria-hidden="true"></i> */}
                     {/* for sign in  */}
                     {/* <Link to={'/logout'}  onClick={handleLogout} className="fa fa-sign-out nav_i"></Link> */}
-                    {cookies.name ?
-                        (<>
+                    {/* {cookies.name ?
+                        (<> */}
                         {/* <span>{cookies.name}</span> */}
-                    <Link  onClick={handleLogout} className="fa fa-sign-out nav_i"></Link>
-                        </>) :
+                    <Link to="/Login" onClick={handleLogout} className="fa fa-sign-out nav_i"></Link>
+                        {/* </>) :
                         <Link to="/Login" className="fa fa-sign-in nav_i">
-                        </Link>
-                    }
+                        </Link> */}
+                    {/* } */}
                 </div>
             </div>
 

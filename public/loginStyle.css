@@ -30,7 +30,7 @@
 }
 
 .super_parent {
-  background-color: burlywood;
+  background-color: rgb(246, 237, 226);
   /* height: 25vh; */
   position: absolute;
   top: 0;
@@ -38,7 +38,7 @@
 }
 
 .mynav {
-  background-color: #0a00105c;
+  background-color: #a99faf5c;
   width: 90px;
   height: 100vh;
   border-radius: 40px;
@@ -74,66 +74,81 @@
 }
 
 .avatar:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  box-shadow: 0 0 2px 1px rgba(54, 58, 59, 0.5);
 }
 
 .chat {
   height: 100vh;
-  background-color: brown;
+  /* background-color: brown; */
   width: 100%;
   border-radius: 40px;
 }
 
 .chat_header {
   height: 10%;
-  background-color: rgb(73, 245, 147);
+  background-color: rgba(94, 84, 87, 0.429);
   width: 100%;
   border-radius: 30px;
+  margin-top: 16px;
 }
 
 .chat_history {
-  height: 80%;
-  background-color: rgb(23, 142, 178);
+  height: 70%;
+  background-color: rgb(255, 255, 255);
   width: 100%;
   border-radius: 30px;
+  overflow-y: scroll;
+  margin-top: 16px;
+  margin-bottom: 10px;
 }
 
 .chat_send {
   height: 10%;
-  background-color: rgb(49, 31, 37);
+  background-color: rgb(94 84 87 / 59%);;
   width: 100%;
   border-radius: 30px;
   position: relative;
   bottom: 0px;
+  margin-top: 16px;
 }
 
 .list {
   height: 100vh;
   /* background-color: rgb(50, 5, 31); */
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 100%;
-  border-radius: 30px;
+  border-radius: 25px;
 }
 
 .list_header {
-  height: 20%;
-  background-color: rgb(73, 245, 147);
+  height: 8%;
+  background-color: rgb(213, 213, 213);
   width: 100%;
   border-radius: 30px;
+  box-shadow: 2px 3px 10px 0px gray;
+
 }
 
 .list_body {
-  height: 80%;
-  /* background-color: rgb(23, 142, 178); */
-  width: 100%;
+  height: 90%;
+  /* background-color: rgb(246, 237, 226);  */
+   width: 100%;
   border-radius: 30px;
   overflow-y: scroll;
-  background-color: #888 !important;
+  margin-top: 9px;
+  /* background-color: #d9d9d9 !important; */
+}
+.list_body ul{
+  background-color: rgb(246, 237, 226);
+  height: 100%;
 }
 .list_body ul li{
   list-style: none;
     margin-left: 0;
-    background-color: #e9c1ff !important;
+    background-color: rgb(246, 237, 226);
+        box-shadow: 2px 3px 10px 0px gray;
+    margin: 10px;
+    border-radius: 20px;
 }
 
 /* Hide the vertical scrollbar for WebKit browsers (Chrome, Safari) */
@@ -144,7 +159,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(160, 160, 160);
+  background: rgb(227, 211, 211);
   border-radius: 40px;
   /* height: 22px; */
 }
@@ -179,7 +194,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow: auto;
+  overflow-y:scrolls;
   &::-webkit-scrollbar {
     width: 0.2rem;
     &-thumb {
@@ -189,3 +204,124 @@
     }
   }
 }
+
+.message {
+  display: flex;
+  align-items: center;
+  .content {
+    max-width: 40%;
+    overflow-wrap: break-word;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 1rem;
+    color: #000000;
+    @media screen and (min-width: 720px) and (max-width: 1080px) {
+      max-width: 70%;
+    }
+  }
+}
+.sended {
+  justify-content: flex-end;
+  .content {
+    background-color: #a3e99521;
+  }
+}
+.recieved {
+  justify-content: flex-start;
+  .content {
+    background-color: #03532620;
+  }
+}
+.nameTitle{
+  font-size: 37px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+
+}
+
+.user_list{
+  font-size: 37px;
+  font-weight: 700;
+  color: #201f1faa;
+  /* text-transform: uppercase; */
+}
+
+/* GroupChat home page */
+.grp_card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  padding: 1rem;
+  position: relative;
+  position: fixed;
+  left: 42%;
+  top: 50%;
+  width: 25vw;
+  transform: translate(-50%, -50%);
+}
+
+.grp_cardHeader {
+  background: #f7c52a;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  transform: skewY(-4deg);
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: inline-block;
+  position: absolute;
+  top: -1rem;
+  left: -0.75rem;
+}
+
+.grp_cardBody {
+  margin-top: 2rem;
+}
+
+.grp_inputGroup {
+  margin-bottom: 1rem;
+}
+
+.grp_label {
+  font-size: 0.9rem;
+}
+
+.grp_input {
+  border: none;
+  padding: 0.5rem 0.1rem;
+  width: 100%;
+  border-radius: 2px;
+  border-bottom: 1px solid #eee;
+  transition: all 0.5s;
+}
+
+.grp_input:focus {
+  border-bottom: 1px solid #ccc;
+}
+
+.grp_button {
+  background: #f7c52a;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.join {
+  background: #f7c52a;
+  padding: 0.25rem 1rem;
+  border-radius: 2px;
+  /* display: inline-block; */
+  float: right;
+}
+.zzz{
+  color: #000 !important;
+  height: 80px;
+}
+
+.react-input-emoji--button svg {
+  fill: #ffffff !important;
+  height: 80px;
+}
+
